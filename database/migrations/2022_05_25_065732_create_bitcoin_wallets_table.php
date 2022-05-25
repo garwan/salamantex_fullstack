@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('bitcoin_wallets', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 512);
-            $table->string('description', 1000);
-            $table->string('email', 1000)->unique();
-            $table->double('max_transactions_allowed');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('address', 36);
+            $table->double('balance', 9);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('bitcoin_wallets');
     }
 };
