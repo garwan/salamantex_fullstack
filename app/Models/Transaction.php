@@ -4,12 +4,11 @@ namespace App\Models;
 
 use App\Enums\CurrencyType;
 use App\Enums\TransactionStateType;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'source_id',
@@ -33,5 +32,28 @@ class Transaction extends Model
     public function targetUser()
     {
         return $this->belongsTo(User::class, 'target_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'transaction_user');
+    }
+
+    public function setStateInProgress()
+    {
+        $this->state = TransactionStateType::IN_PROGRESS;
+        $this->save();
+    }
+
+    public function setStateComplete()
+    {
+        $this->state = TransactionStateType::COMPLETED;
+        $this->save();
+    }
+
+    public function setStateAborted()
+    {
+        $this->state = TransactionStateType::ABORTED;
+        $this->save();
     }
 }
