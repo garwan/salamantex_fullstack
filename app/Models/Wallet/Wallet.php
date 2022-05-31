@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Wallet extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = ['address', 'balance'];
 
     public function user()
