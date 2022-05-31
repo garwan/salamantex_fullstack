@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum CurrencyType: string
 {
-    case Bitcoin = 'BTC';
-    case Ethereum = 'ETH';
+    case Bitcoin = 'Bitcoin';
+    case Ethereum = 'Ethereum';
 }
