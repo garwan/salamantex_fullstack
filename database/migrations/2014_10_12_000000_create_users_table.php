@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 512);
-            $table->string('description', 1000);
+            $table->string('description', 1000)->nullable();
             $table->string('email', 1000)->unique();
-            $table->double('max_transactions_allowed');
+            $table->double('max_transactions_allowed', 1000)->default(1e9);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
