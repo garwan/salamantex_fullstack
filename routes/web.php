@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\CurrencySymbol;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\UserController::class, 'getUserTransactionHistory'])->name('home');
+Route::post('/assign-wallet-to-user', [App\Http\Controllers\UserController::class, 'addWalletToUser'])->name('assign.wallet.to.user');
+Route::post('/store-transactions', [App\Http\Controllers\TransactionController::class, 'createTransaction'])->name('create.transaction');
