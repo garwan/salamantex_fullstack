@@ -7,6 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">
+                       <b>Error:</b> {{ session('error') }}
+                    </div>
+                @endif
+
                 @if (session('new_transaction_id'))
                     <div class="alert alert-success" role="alert">
                         Transaction #{{ session('new_transaction_id') }} was created.
