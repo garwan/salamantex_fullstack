@@ -65,7 +65,15 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control" name="description"   ></textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"    ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="max_transactions_allowed" class="col-md-4 col-form-label text-md-end">{{ __('Max amount transaction') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="max_transactions_allowed" type="number" class="form-control @error('max_transactions_allowed') is-invalid @enderror" name="max_transactions_allowed" value="{{ old('max_transactions_allowed') ?? 1000000 }}" required >
                             </div>
                         </div>
 
