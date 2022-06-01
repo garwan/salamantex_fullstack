@@ -14,7 +14,7 @@
                      value="{{ old('target_id') }}" 
                      required>
                      @foreach ($data->users as $user)
-                         <option value="{{$user['id']}}">{{$user['name']}}</option>
+                         <option value="{{$user['id']}}" {{old('target_id') === $user['id'] ?'selected' : ''}} >{{$user['name']}}</option>
                      @endforeach
                  </select>
          
@@ -38,7 +38,7 @@
                      value="{{ old('currency_type') }}" 
                      required>
                      @foreach ($data->currencies as $currency_key => $currency)
-                         <option value="{{$currency_key}}">{{$currency}}</option>
+                         <option value="{{$currency_key}}" {{old('currency_type') === $currency_key ?'selected' : ''}}>{{$currency}}</option>
                      @endforeach
                  </select>
          
