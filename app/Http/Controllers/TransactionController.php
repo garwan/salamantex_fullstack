@@ -16,7 +16,17 @@ class TransactionController extends Controller
 
     public function createTransaction(CreateTransactionRequest $request)
     {
-        $this->_transactionService->createTransaction($request);
+        $msgs = $this->_transactionService->createTransaction($request);
+
+        if (isset($msgs['error'])) {
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with(
+                    'error',
+                    $msgs['error']
+                );
+        }
 
         return redirect()->back();
     }
