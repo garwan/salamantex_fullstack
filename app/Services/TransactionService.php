@@ -37,6 +37,10 @@ class TransactionService
                 throw new \Exception(TransactionError::INSUFFICIENT_BALANCE->value);
             }
 
+            if (!$this->_userService->isUnderAllowedTransactionMaximum($transaction)) {
+                throw new \Exception(TransactionError::MAX_AMOUNT_EXCEEDED->value);
+            }
+
             DB::beginTransaction();
 
             $transaction->save();
