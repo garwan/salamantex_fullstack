@@ -35,7 +35,16 @@ class UserService
             $transaction->currency_type
         );
 
-        return $used_wallet->balance > $transaction->amount;
+        return $used_wallet->balance >= $transaction->amount;
+    }
+
+    public function isUnderAllowedTransactionMaximum(
+        Transaction $transaction,
+        User $user = null
+    ) {
+        $used_user = $user ?? $transaction->sourceUser;
+
+        return $transaction->amount <= $used_user->max_transactions_allowed;
     }
 
     public function subtractAmountFromUserWallet(
