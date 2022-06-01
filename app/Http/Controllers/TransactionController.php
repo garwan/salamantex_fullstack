@@ -14,6 +14,7 @@ class TransactionController extends Controller
     public function __construct(TransactionService $transactionService)
     {
         $this->_transactionService = $transactionService;
+        $this->middleware('auth');
     }
 
     public function createTransaction(CreateTransactionRequest $request)
