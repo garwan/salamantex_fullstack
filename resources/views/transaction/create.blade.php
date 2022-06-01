@@ -1,5 +1,5 @@
 <div class="card-body">
-    <form method="POST" action="{{ route('create.transaction') }}">
+    <form method="POST" action="{{ route('transaction.create') }}">
          @csrf
 
          <div class="row mb-3">

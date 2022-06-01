@@ -22,4 +22,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\UserController::class, 'getUserTransactionHistory'])->name('home');
 Route::post('/assign-wallet-to-user', [App\Http\Controllers\UserController::class, 'addWalletToUser'])->name('assign.wallet.to.user');
-Route::post('/store-transactions', [App\Http\Controllers\TransactionController::class, 'createTransaction'])->name('create.transaction');
+Route::post('/store-transactions', [App\Http\Controllers\TransactionController::class, 'createTransaction'])->name('transaction.create');
+Route::get('/transaction/{transaction}/status', [App\Http\Controllers\TransactionController::class, 'getTransactionStatus'])->name('transaction.status');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTransactionRequest;
+use App\Models\Transaction;
 use App\Services\TransactionService;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
@@ -29,5 +31,13 @@ class TransactionController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function getTransactionStatus(Request $request, Transaction $transaction)
+    {
+        return view('transaction.detail')->with(
+            'transaction_status',
+            $transaction->state->value
+        );
     }
 }
