@@ -33,6 +33,10 @@ class TransactionService
                 ]
             );
 
+            if (!$this->canTransactionBeExecuted($transaction)) {
+                throw new \Exception(TransactionError::WALLET_NOT_FOUND->value);
+            }
+
             if (!$this->_userService->userHasSufficientBalance($transaction, $user)) {
                 throw new \Exception(TransactionError::INSUFFICIENT_BALANCE->value);
             }
