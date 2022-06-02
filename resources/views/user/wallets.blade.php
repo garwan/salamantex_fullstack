@@ -48,7 +48,7 @@
                     <label for="balance" class="col-md-4 col-form-label text-md-end">{{ __("$currency_key balance") }}</label>
 
                     <div class="col-md-6">
-                        <input id="balance" type="text" class="form-control @error('balance') is-invalid @enderror" name="balance" value="{{ old('balance') }}" required>
+                        <input id="balance" type="number" class="form-control @error('balance') is-invalid @enderror" name="balance" value="{{ old('balance') }}" required>
 
                         @error('balance')
                             <span class="invalid-feedback" role="alert">
